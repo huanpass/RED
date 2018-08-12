@@ -118,6 +118,7 @@ class Deconv2DLayer(lasagne.layers.Layer):
 
     def get_output_for(self, input, **kwargs):
         op = T.nnet.abstract_conv.AbstractConv2d_gradInputs(imshp=self.target_shape, kshp=self.W_shape, subsample=self.stride, border_mode='half')
+        
         activation = op(self.W, input, self.target_shape[2:])
 
         if self.b is not None:
