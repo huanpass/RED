@@ -1,7 +1,48 @@
 #!/usr/bin/env python
-
-
 import numpy as np
+import theano as th
+import theano.tensor as T
+import lasagne
+from lasagne.layers import dnn
+from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
+
+def input2padding(x,input_shape,filter_shape,stride):
+    """
+    """
+    N = input_shape[0]
+    C = input_shape[1]
+    H = input_shape[2]
+    W = input_shape[3]
+    temp = np.zeros([N,C,H,W])
+    temp = x.eval()
+    print(temp.shape)
+    K = filter_shape
+    S = stride
+    P = int(K/2)
+    output_H = S*H+K-1
+    output_W = S*W+K-1
+    output = np.zeros([N,C,output_H,output_W])
+    for n in range(N):
+        for k in range(C):
+            for i in range(output_H):
+                for j in range(output_W):
+                    if(((i>=P+1 and i<output_H-P) and ((i-P-1)%2==0)) and ((j>=P and j<output_W-P-1) and ((j-P)%2==0))):
+                        #print(i,j)
+                        output[n,k,i,j] = temp[n,k,int((i-P-1)/2),int((j-P)/2)]
+    return output
+
+
+def weight2crossbar(weight,weight_shape):
+    N = weight_shape[0]
+    C = weight_shape[1]
+    H = weight_shape[2]
+    W = weight_shape[3]
+    weightcrossbar_H = N
+    weightcrossbar_W = C*H*W
+    weightcrossbar = np.zeros([weightcrossbar_H,weightcrossbar_W])
+    for i in range(weightcrossbar_H):
+        weightcrossbar[i,:] = weight[i,:].reshape((1,-1)).eval()
+    return weightcrossbar
 
 
 
@@ -28,7 +69,8 @@ def input2column(x,HH,WW,stride):
             cols[i*W_R+j,:]=patch.reshape(-1)
     return cols
 
-def conv_forward_fast(x,w,b,conv_param,ReRAM=None):
+
+def conv_forward_fast(x,w,conv_param,ReRAM=None):
     """
     Input:
     - x: Input data of shape(N,C,H,W)
@@ -66,7 +108,7 @@ def conv_forward_fast(x,w,b,conv_param,ReRAM=None):
         #im_w has a shape of(F,C*WW*HH)
         im_w=np.reshape(w,(F,-1))
         #im_out has a shape of (H_prime*W_prime,F)
-        im_out=np.dot(im_x,im_w.T)+b
+        im_out=np.dot(im_x,im_w.T)
         out[i,:,:,:,]=col2im(im_out,H_prime,W_prime,C)
     if ReRAM is not None:
         ReRAM.CONV_Layer('conv',im_x.T.shape,im_w.T.shape)

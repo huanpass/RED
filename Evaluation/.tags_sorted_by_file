@@ -1,0 +1,745 @@
+ConductanceToWeight	Array.cpp	/^double Array::ConductanceToWeight(int x, int y, double maxWeight, double minWeight) {$/;"	f	class:Array
+GetMaxCellReadCurrent	Array.cpp	/^double Array::GetMaxCellReadCurrent(int x, int y) {$/;"	f	class:Array
+ReadCell	Array.cpp	/^double Array::ReadCell(int x, int y) {$/;"	f	class:Array
+WriteCell	Array.cpp	/^void Array::WriteCell(int x, int y, double deltaWeight, double maxWeight, double minWeight, $/;"	f	class:Array
+ARRAY_H_	Array.h	40;"	d
+Array	Array.h	/^	Array(int arrayColSize, int arrayRowSize, int wireWidth) {$/;"	f	class:Array
+Array	Array.h	/^class Array {$/;"	c
+Initialization	Array.h	/^	void Initialization(int numCellPerSynapse=1) {$/;"	f	class:Array
+arrayColSize	Array.h	/^	int arrayColSize, arrayRowSize, wireWidth;$/;"	m	class:Array
+arrayRowSize	Array.h	/^	int arrayColSize, arrayRowSize, wireWidth;$/;"	m	class:Array
+cell	Array.h	/^	Cell ***cell;$/;"	m	class:Array
+numCellPerSynapse	Array.h	/^	int numCellPerSynapse;	\/\/ For SRAM to use redundant cells to represent one synapse$/;"	m	class:Array
+readEnergy	Array.h	/^	double readEnergy, writeEnergy;$/;"	m	class:Array
+unitLengthWireResistance	Array.h	/^	double unitLengthWireResistance;$/;"	m	class:Array
+wireCapBLCol	Array.h	/^	double wireCapBLCol;	\/\/ Cap of 1T1R BL cap in digital eNVM$/;"	m	class:Array
+wireCapCol	Array.h	/^	double wireCapCol;	\/\/ Cap of the BL (cross-point) or SL (1T1R)$/;"	m	class:Array
+wireCapRow	Array.h	/^	double wireCapRow;	\/\/ Cap of the WL (cross-point) or BL (1T1R)$/;"	m	class:Array
+wireGateCapRow	Array.h	/^	double wireGateCapRow;	\/\/ Cap of 1T1R WL cap$/;"	m	class:Array
+wireResistanceCol	Array.h	/^	double wireResistanceRow, wireResistanceCol;$/;"	m	class:Array
+wireResistanceRow	Array.h	/^	double wireResistanceRow, wireResistanceCol;$/;"	m	class:Array
+wireWidth	Array.h	/^	int arrayColSize, arrayRowSize, wireWidth;$/;"	m	class:Array
+writeEnergy	Array.h	/^	double readEnergy, writeEnergy;$/;"	m	class:Array
+writeEnergySRAMCell	Array.h	/^	double writeEnergySRAMCell;	\/\/ Write energy per SRAM cell (will move this to SRAM cell level in the future)$/;"	m	class:Array
+DigitalNVM	Cell.cpp	/^DigitalNVM::DigitalNVM(int x, int y) {$/;"	f	class:DigitalNVM
+IdealDevice	Cell.cpp	/^IdealDevice::IdealDevice(int x, int y) {$/;"	f	class:IdealDevice
+MeasuredDevice	Cell.cpp	/^MeasuredDevice::MeasuredDevice(int x, int y) {$/;"	f	class:MeasuredDevice
+Read	Cell.cpp	/^double DigitalNVM::Read(double voltage) {$/;"	f	class:DigitalNVM
+Read	Cell.cpp	/^double IdealDevice::Read(double voltage) {$/;"	f	class:IdealDevice
+Read	Cell.cpp	/^double MeasuredDevice::Read(double voltage) {$/;"	f	class:MeasuredDevice
+Read	Cell.cpp	/^double RealDevice::Read(double voltage) {	\/\/ Return read current (A)$/;"	f	class:RealDevice
+RealDevice	Cell.cpp	/^RealDevice::RealDevice(int x, int y) {$/;"	f	class:RealDevice
+SRAM	Cell.cpp	/^SRAM::SRAM(int x, int y) {$/;"	f	class:SRAM
+Write	Cell.cpp	/^void DigitalNVM::Write(int bitNew, double wireCapCol) {$/;"	f	class:DigitalNVM
+Write	Cell.cpp	/^void IdealDevice::Write(double deltaWeightNormalized, bool writeEnergyReport, double wireCapCol) {$/;"	f	class:IdealDevice
+Write	Cell.cpp	/^void MeasuredDevice::Write(double deltaWeightNormalized, bool writeEnergyReport, double wireCapCol) {$/;"	f	class:MeasuredDevice
+Write	Cell.cpp	/^void RealDevice::Write(double deltaWeightNormalized, bool writeEnergyReport, double wireCapCol) {$/;"	f	class:RealDevice
+WriteEnergyCalculation	Cell.cpp	/^void AnalogNVM::WriteEnergyCalculation(double conductance, double conductanceNew, double wireCapCol) {$/;"	f	class:AnalogNVM
+AnalogNVM	Cell.h	/^class AnalogNVM: public eNVM {$/;"	c
+CELL_H_	Cell.h	40;"	d
+Cell	Cell.h	/^class Cell {$/;"	c
+DigitalNVM	Cell.h	/^class DigitalNVM: public eNVM {$/;"	c
+FeFET	Cell.h	/^	bool FeFET;         \/\/ True: FeFET structure (Pseudo-crossbar only, should be cmosAccess=1)$/;"	m	class:eNVM
+GetMaxReadCurrent	Cell.h	/^	double GetMaxReadCurrent() {return readVoltage * maxConductance;}$/;"	f	class:AnalogNVM
+GetMinReadCurrent	Cell.h	/^	double GetMinReadCurrent() {return readVoltage * minConductance;}$/;"	f	class:AnalogNVM
+IdealDevice	Cell.h	/^class IdealDevice: public AnalogNVM {$/;"	c
+MeasuredDevice	Cell.h	/^class MeasuredDevice: public AnalogNVM {$/;"	c
+NL	Cell.h	/^	double NL;	\/\/ Nonlinearity in write scheme (the current ratio between Vw and Vw\/2), assuming for the LTP side$/;"	m	class:eNVM
+NL_LTD	Cell.h	/^	double NL_LTD;      \/\/ LTD nonlinearity$/;"	m	class:RealDevice
+NL_LTP	Cell.h	/^	double NL_LTP;      \/\/ LTP nonlinearity$/;"	m	class:RealDevice
+RealDevice	Cell.h	/^class RealDevice: public AnalogNVM {$/;"	c
+SRAM	Cell.h	/^class SRAM: public Cell {$/;"	c
+area	Cell.h	/^	double area;	\/\/ Cell area (m^2)$/;"	m	class:Cell
+cmosAccess	Cell.h	/^	bool cmosAccess;	\/\/ True: Pseudo-crossbar (1T1R), false: cross-point$/;"	m	class:eNVM
+conductance	Cell.h	/^	double conductance;	\/\/ Current conductance (S) (Dynamic variable) at on-chip Vr (different than the Vr in the reported measurement data)$/;"	m	class:eNVM
+conductanceAtHalfVwLTD	Cell.h	/^	double conductanceAtHalfVwLTD;	\/\/ Conductance at 1\/2 LTD write voltage$/;"	m	class:eNVM
+conductanceAtHalfVwLTP	Cell.h	/^	double conductanceAtHalfVwLTP;	\/\/ Conductance at 1\/2 LTP write voltage$/;"	m	class:eNVM
+conductanceAtVwLTD	Cell.h	/^	double conductanceAtVwLTD;		\/\/ Conductance at the LTD write voltage$/;"	m	class:eNVM
+conductanceAtVwLTP	Cell.h	/^	double conductanceAtVwLTP;		\/\/ Conductance at the LTP write voltage$/;"	m	class:eNVM
+eNVM	Cell.h	/^class eNVM: public Cell {$/;"	c
+gaussian_dist	Cell.h	/^	std::normal_distribution<double> *gaussian_dist;	\/\/ Normal distribution object$/;"	m	class:eNVM
+gaussian_dist2	Cell.h	/^	std::normal_distribution<double> *gaussian_dist2;	\/\/ Normal distribution object$/;"	m	class:eNVM
+gaussian_dist3	Cell.h	/^	std::normal_distribution<double> *gaussian_dist3;	\/\/ Normal distribution object$/;"	m	class:eNVM
+heightInFeatureSize	Cell.h	/^	double heightInFeatureSize, widthInFeatureSize;	\/\/ Cell height\/width in terms of feature size (F)$/;"	m	class:Cell
+maxConductance	Cell.h	/^	double maxConductance;	\/\/ Maximum cell conductance (S)$/;"	m	class:eNVM
+maxNumLevelLTD	Cell.h	/^	int maxNumLevelLTD;	\/\/ Maximum number of conductance states during LTD or weight decrease$/;"	m	class:AnalogNVM
+maxNumLevelLTP	Cell.h	/^	int maxNumLevelLTP;	\/\/ Maximum number of conductance states during LTP or weight increase$/;"	m	class:AnalogNVM
+minConductance	Cell.h	/^	double minConductance;	\/\/ Minimum cell conductance (S)$/;"	m	class:eNVM
+nonlinearIV	Cell.h	/^	bool nonlinearIV;	\/\/ Consider I-V nonlinearity or not (Currently this option is for cross-point array. It is hard to have this option in pseudo-crossbar since it has an access transistor and the transistor's resistance can be comparable to RRAM's resistance after considering the nonlinearity. In this case, we have to iteratively find both the resistance and Vw across RRAM.)$/;"	m	class:eNVM
+nonlinearWrite	Cell.h	/^	bool nonlinearWrite;	\/\/ Consider weight update nonlinearity or not$/;"	m	class:RealDevice
+numBitLTD	Cell.h	/^	double numBitLTD;	\/\/ Number of bits in the conductance states during LTD or weight decrease$/;"	m	class:AnalogNVM
+numBitLTP	Cell.h	/^	double numBitLTP;	\/\/ Number of bits in the conductance states during LTP or weight increase$/;"	m	class:AnalogNVM
+numPulse	Cell.h	/^	int numPulse;   \/\/ Number of write pulses used in the most recent write operation (Positive number: LTP, Negative number: LTD) (dynamic variable)$/;"	m	class:AnalogNVM
+paramALTD	Cell.h	/^	double paramALTD;	\/\/ Parameter A for LTD nonlinearity$/;"	m	class:RealDevice
+paramALTP	Cell.h	/^	double paramALTP;	\/\/ Parameter A for LTP nonlinearity$/;"	m	class:RealDevice
+paramBLTD	Cell.h	/^	double paramBLTD;	\/\/ Parameter B for LTD nonlinearity$/;"	m	class:RealDevice
+paramBLTP	Cell.h	/^	double paramBLTP;	\/\/ Parameter B for LTP nonlinearity$/;"	m	class:RealDevice
+readEnergy	Cell.h	/^	double readEnergy;	\/\/ Dynamic variable for calculation of read energy (J)$/;"	m	class:eNVM
+readNoise	Cell.h	/^	bool readNoise;	\/\/ Consider read noise or not$/;"	m	class:eNVM
+readPulseWidth	Cell.h	/^	double readPulseWidth;	\/\/ Read pulse width (s) (will be determined by ADC)$/;"	m	class:eNVM
+readVoltage	Cell.h	/^	double readVoltage;	\/\/ On-chip read voltage (Vr) (V)$/;"	m	class:eNVM
+resistanceAccess	Cell.h	/^	double resistanceAccess;	\/\/ The resistance of transistor (Ohm) in Pseudo-crossbar array when turned ON$/;"	m	class:eNVM
+sigmaCtoC	Cell.h	/^	double sigmaCtoC;	\/\/ Sigma of cycle-to-cycle variation on weight update$/;"	m	class:RealDevice
+sigmaDtoD	Cell.h	/^	double sigmaDtoD;	\/\/ Sigma of device-to-device variation on weight update nonliearity baseline$/;"	m	class:RealDevice
+sigmaReadNoise	Cell.h	/^	double sigmaReadNoise;	\/\/ Sigma of read noise in gaussian distribution$/;"	m	class:eNVM
+widthInFeatureSize	Cell.h	/^	double heightInFeatureSize, widthInFeatureSize;	\/\/ Cell height\/width in terms of feature size (F)$/;"	m	class:Cell
+writeEnergy	Cell.h	/^	double writeEnergy;	\/\/ Dynamic variable for calculation of write energy (J)$/;"	m	class:eNVM
+writePulseWidthLTD	Cell.h	/^	double writePulseWidthLTD;	\/\/ Write pulse width (s) of LTD or weight decrease$/;"	m	class:eNVM
+writePulseWidthLTP	Cell.h	/^	double writePulseWidthLTP;	\/\/ Write pulse width (s) of LTP or weight increase$/;"	m	class:eNVM
+writeVoltageLTD	Cell.h	/^	double writeVoltageLTD;	\/\/ Write voltage (V) for LTD or weight decrease$/;"	m	class:eNVM
+writeVoltageLTP	Cell.h	/^	double writeVoltageLTP;	\/\/ Write voltage (V) for LTP or weight increase$/;"	m	class:eNVM
+x	Cell.h	/^	int x, y;	\/\/ Cell location: x (column) and y (row) start from index 0$/;"	m	class:Cell
+xPulse	Cell.h	/^	double xPulse;		\/\/ Conductance state in terms of the pulse number (doesn't need to be integer)$/;"	m	class:RealDevice
+y	Cell.h	/^	int x, y;	\/\/ Cell location: x (column) and y (row) start from index 0$/;"	m	class:Cell
+~Cell	Cell.h	/^	virtual ~Cell() {}	\/\/ Add a virtual function to enable dynamic_cast$/;"	f	class:Cell
+arrayHO	Definition.h	/^Array *arrayHO = new Array(param->nOutput, param->nHide, param->arrayWireWidth);$/;"	v
+arrayIH	Definition.h	/^Array *arrayIH = new Array(param->nHide, param->nInput, param->arrayWireWidth);$/;"	v
+arrayIH_0	Definition.h	/^Array *arrayIH_0 = new Array(param->nHide_0, param->nInput_0, param->arrayWireWidth);$/;"	v
+cellHO	Definition.h	/^MemCell cellHO;$/;"	v
+cellIH	Definition.h	/^MemCell cellIH;$/;"	v
+correct	Definition.h	/^int correct = 0;$/;"	v
+gen	Definition.h	/^std::mt19937 gen;$/;"	v
+inputParameterHO	Definition.h	/^InputParameter inputParameterHO;$/;"	v
+inputParameterIH	Definition.h	/^InputParameter inputParameterIH;$/;"	v
+param	Definition.h	/^Param *param = new Param(); \/\/ Parameter set$/;"	v
+subArrayHO	Definition.h	/^SubArray *subArrayHO;   \/\/ NeuroSim synaptic core for arrayHO$/;"	v
+subArrayIH	Definition.h	/^SubArray *subArrayIH;   \/\/ NeuroSim synaptic core for arrayIH$/;"	v
+techHO	Definition.h	/^Technology techHO;$/;"	v
+techIH	Definition.h	/^Technology techIH;$/;"	v
+PrintWeightToFile	IO.cpp	/^void PrintWeightToFile(const char *str) {$/;"	f
+ReadTestingDataFromFile	IO.cpp	/^void ReadTestingDataFromFile(\/*const char *testPatchFileName, const char *testLabelFileName*\/int ispadding) {$/;"	f
+ReadTrainingDataFromFile	IO.cpp	/^void ReadTrainingDataFromFile(const char *trainPatchFileName, const char *trainLabelFileName) {$/;"	f
+IO_H_	IO.h	40;"	d
+CurrentToDigits	Mapping.cpp	/^int CurrentToDigits(double I \/* current *\/, double Imax \/* max current *\/) {$/;"	f
+DigitsToAlgorithm	Mapping.cpp	/^double DigitsToAlgorithm(int outputDigits \/* output digits from ADC *\/, double pSumMaxAlgorithm \/* max value of partial weighted sum in algorithm *\/) {$/;"	f
+WeightInitialize	Mapping.cpp	/^void WeightInitialize() {$/;"	f
+WeightToConductance	Mapping.cpp	/^void WeightToConductance(int ispadding) {$/;"	f
+MAPPING_H_	Mapping.h	40;"	d
+NeuroSimNeuronArea	NeuroSim.cpp	/^void NeuroSimNeuronArea(SubArray *subArray, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff, double *height, double *width) {$/;"	f
+NeuroSimNeuronInitialize	NeuroSim.cpp	/^void NeuroSimNeuronInitialize(SubArray *& subArray, InputParameter& inputParameter, Technology& tech, MemCell& cell, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff) {$/;"	f
+NeuroSimNeuronLeakagePower	NeuroSim.cpp	/^double NeuroSimNeuronLeakagePower(SubArray *subArray, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff) { \/\/ Same as NeuroSimNeuronReadEnergy$/;"	f
+NeuroSimNeuronReadEnergy	NeuroSim.cpp	/^double NeuroSimNeuronReadEnergy(SubArray *subArray, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff) {	\/\/ For 1 weighted sum task on selected columns$/;"	f
+NeuroSimNeuronReadLatency	NeuroSim.cpp	/^double NeuroSimNeuronReadLatency(SubArray *subArray, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff) {	\/\/ For 1 weighted sum task on selected columns$/;"	f
+NeuroSimSubArrayArea	NeuroSim.cpp	/^void NeuroSimSubArrayArea(SubArray *subArray) {$/;"	f
+NeuroSimSubArrayInitialize	NeuroSim.cpp	/^void NeuroSimSubArrayInitialize(SubArray *& subArray, Array *array, InputParameter& inputParameter, Technology& tech, MemCell& cell) {$/;"	f
+NeuroSimSubArrayLeakagePower	NeuroSim.cpp	/^double NeuroSimSubArrayLeakagePower(SubArray *subArray) {$/;"	f
+NeuroSimSubArrayReadEnergy	NeuroSim.cpp	/^double NeuroSimSubArrayReadEnergy(SubArray *subArray) {	\/\/ For 1 weighted sum task on selected columns$/;"	f
+NeuroSimSubArrayReadLatency	NeuroSim.cpp	/^double NeuroSimSubArrayReadLatency(SubArray *subArray) {	\/\/ For 1 weighted sum task on selected columns$/;"	f
+NeuroSimSubArrayWriteEnergy	NeuroSim.cpp	/^double NeuroSimSubArrayWriteEnergy(SubArray *subArray) {	\/\/ For 1 weight update task of one row$/;"	f
+NeuroSimSubArrayWriteLatency	NeuroSim.cpp	/^double NeuroSimSubArrayWriteLatency(SubArray *subArray) {	\/\/ For 1 weight update task of whole array$/;"	f
+NEUROSIM_H_	NeuroSim.h	40;"	d
+Adder	NeuroSim\Adder.cpp	/^Adder::Adder(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit() {$/;"	f	class:Adder
+CalculateArea	NeuroSim\Adder.cpp	/^void Adder::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:Adder
+CalculateLatency	NeuroSim\Adder.cpp	/^void Adder::CalculateLatency(double _rampInput, double _capLoad, double numRead){$/;"	f	class:Adder
+CalculatePower	NeuroSim\Adder.cpp	/^void Adder::CalculatePower(double numRead, int numAdderPerOperation) {$/;"	f	class:Adder
+Initialize	NeuroSim\Adder.cpp	/^void Adder::Initialize(int _numBit, int _numAdder){$/;"	f	class:Adder
+PrintProperty	NeuroSim\Adder.cpp	/^void Adder::PrintProperty(const char* str) {$/;"	f	class:Adder
+ADDER_H_	NeuroSim\Adder.h	40;"	d
+Adder	NeuroSim\Adder.h	/^class Adder: public FunctionUnit {$/;"	c
+capLoad	NeuroSim\Adder.h	/^	double capLoad;$/;"	m	class:Adder
+capNandInput	NeuroSim\Adder.h	/^	double capNandInput, capNandOutput;$/;"	m	class:Adder
+capNandOutput	NeuroSim\Adder.h	/^	double capNandInput, capNandOutput;$/;"	m	class:Adder
+cell	NeuroSim\Adder.h	/^	const MemCell& cell;$/;"	m	class:Adder
+hAdder	NeuroSim\Adder.h	/^	double hAdder, wAdder;$/;"	m	class:Adder
+initialized	NeuroSim\Adder.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:Adder
+inputParameter	NeuroSim\Adder.h	/^	const InputParameter& inputParameter;$/;"	m	class:Adder
+numAdder	NeuroSim\Adder.h	/^	int numAdder;$/;"	m	class:Adder
+numBit	NeuroSim\Adder.h	/^	int numBit;$/;"	m	class:Adder
+rampInput	NeuroSim\Adder.h	/^	double rampInput, rampOutput;$/;"	m	class:Adder
+rampOutput	NeuroSim\Adder.h	/^	double rampInput, rampOutput;$/;"	m	class:Adder
+tech	NeuroSim\Adder.h	/^	const Technology& tech;$/;"	m	class:Adder
+wAdder	NeuroSim\Adder.h	/^	double hAdder, wAdder;$/;"	m	class:Adder
+widthNandN	NeuroSim\Adder.h	/^	double widthNandN, widthNandP;$/;"	m	class:Adder
+widthNandP	NeuroSim\Adder.h	/^	double widthNandN, widthNandP;$/;"	m	class:Adder
+~Adder	NeuroSim\Adder.h	/^	virtual ~Adder() {}$/;"	f	class:Adder
+CalculateArea	NeuroSim\DFF.cpp	/^void DFF::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:DFF
+CalculateLatency	NeuroSim\DFF.cpp	/^void DFF::CalculateLatency(double _rampInput, double numRead){$/;"	f	class:DFF
+CalculatePower	NeuroSim\DFF.cpp	/^void DFF::CalculatePower(double numRead, double numDffPerOperation) {$/;"	f	class:DFF
+DFF	NeuroSim\DFF.cpp	/^DFF::DFF(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit() {$/;"	f	class:DFF
+Initialize	NeuroSim\DFF.cpp	/^void DFF::Initialize(int _numDff, double _clkFreq){$/;"	f	class:DFF
+PrintProperty	NeuroSim\DFF.cpp	/^void DFF::PrintProperty(const char* str) {$/;"	f	class:DFF
+DFF	NeuroSim\DFF.h	/^class DFF: public FunctionUnit {$/;"	c
+DFF_H_	NeuroSim\DFF.h	40;"	d
+capInvInput	NeuroSim\DFF.h	/^	double capTgDrain, capTgGateN, capTgGateP, capInvInput, capInvOutput;$/;"	m	class:DFF
+capInvOutput	NeuroSim\DFF.h	/^	double capTgDrain, capTgGateN, capTgGateP, capInvInput, capInvOutput;$/;"	m	class:DFF
+capTgDrain	NeuroSim\DFF.h	/^	double capTgDrain, capTgGateN, capTgGateP, capInvInput, capInvOutput;$/;"	m	class:DFF
+capTgGateN	NeuroSim\DFF.h	/^	double capTgDrain, capTgGateN, capTgGateP, capInvInput, capInvOutput;$/;"	m	class:DFF
+capTgGateP	NeuroSim\DFF.h	/^	double capTgDrain, capTgGateN, capTgGateP, capInvInput, capInvOutput;$/;"	m	class:DFF
+cell	NeuroSim\DFF.h	/^	const MemCell& cell;$/;"	m	class:DFF
+clkFreq	NeuroSim\DFF.h	/^	double clkFreq;$/;"	m	class:DFF
+initialized	NeuroSim\DFF.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:DFF
+inputParameter	NeuroSim\DFF.h	/^	const InputParameter& inputParameter;$/;"	m	class:DFF
+numDff	NeuroSim\DFF.h	/^	int numDff;			\/* Number of columns *\/$/;"	m	class:DFF
+rampInput	NeuroSim\DFF.h	/^	double rampInput, rampOutput;$/;"	m	class:DFF
+rampOutput	NeuroSim\DFF.h	/^	double rampInput, rampOutput;$/;"	m	class:DFF
+tech	NeuroSim\DFF.h	/^	const Technology& tech;$/;"	m	class:DFF
+widthInvN	NeuroSim\DFF.h	/^	double widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:DFF
+widthInvP	NeuroSim\DFF.h	/^	double widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:DFF
+widthTgN	NeuroSim\DFF.h	/^	double widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:DFF
+widthTgP	NeuroSim\DFF.h	/^	double widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:DFF
+~DFF	NeuroSim\DFF.h	/^	virtual ~DFF() {}$/;"	f	class:DFF
+FunctionUnit	NeuroSim\FunctionUnit.cpp	/^FunctionUnit::FunctionUnit() {$/;"	f	class:FunctionUnit
+MagicLayout	NeuroSim\FunctionUnit.cpp	/^void FunctionUnit::MagicLayout() {$/;"	f	class:FunctionUnit
+OverrideLayout	NeuroSim\FunctionUnit.cpp	/^void FunctionUnit::OverrideLayout() {$/;"	f	class:FunctionUnit
+PrintProperty	NeuroSim\FunctionUnit.cpp	/^void FunctionUnit::PrintProperty(const char* str) {$/;"	f	class:FunctionUnit
+FUNCTIONUNIT_H_	NeuroSim\FunctionUnit.h	40;"	d
+FunctionUnit	NeuroSim\FunctionUnit.h	/^class FunctionUnit {$/;"	c
+area	NeuroSim\FunctionUnit.h	/^	double area;		\/* Unit: m^2 *\/$/;"	m	class:FunctionUnit
+emptyArea	NeuroSim\FunctionUnit.h	/^	double emptyArea;		\/* Unit: m^2 *\/$/;"	m	class:FunctionUnit
+height	NeuroSim\FunctionUnit.h	/^	double height;		\/* Unit: m *\/$/;"	m	class:FunctionUnit
+leakage	NeuroSim\FunctionUnit.h	/^	double leakage;		\/* Unit: W *\/$/;"	m	class:FunctionUnit
+newHeight	NeuroSim\FunctionUnit.h	/^	double newWidth, newHeight;$/;"	m	class:FunctionUnit
+newWidth	NeuroSim\FunctionUnit.h	/^	double newWidth, newHeight;$/;"	m	class:FunctionUnit
+readDynamicEnergy	NeuroSim\FunctionUnit.h	/^	double readDynamicEnergy, writeDynamicEnergy;	\/* Unit: J *\/$/;"	m	class:FunctionUnit
+readLatency	NeuroSim\FunctionUnit.h	/^	double readLatency, writeLatency;		\/* Unit: s *\/$/;"	m	class:FunctionUnit
+readPower	NeuroSim\FunctionUnit.h	/^	double readPower, writePower;$/;"	m	class:FunctionUnit
+totalArea	NeuroSim\FunctionUnit.h	/^	double totalArea;		\/* Unit: m^2 *\/$/;"	m	class:FunctionUnit
+usedArea	NeuroSim\FunctionUnit.h	/^	double usedArea;		\/* Unit: m^2 *\/$/;"	m	class:FunctionUnit
+width	NeuroSim\FunctionUnit.h	/^	double width;		\/* Unit: m *\/$/;"	m	class:FunctionUnit
+writeDynamicEnergy	NeuroSim\FunctionUnit.h	/^	double readDynamicEnergy, writeDynamicEnergy;	\/* Unit: J *\/$/;"	m	class:FunctionUnit
+writeLatency	NeuroSim\FunctionUnit.h	/^	double readLatency, writeLatency;		\/* Unit: s *\/$/;"	m	class:FunctionUnit
+writePower	NeuroSim\FunctionUnit.h	/^	double readPower, writePower;$/;"	m	class:FunctionUnit
+~FunctionUnit	NeuroSim\FunctionUnit.h	/^	virtual ~FunctionUnit() {}$/;"	f	class:FunctionUnit
+INPUTPARAMETER_H_	NeuroSim\InputParameter.h	40;"	d
+InputParameter	NeuroSim\InputParameter.h	/^class InputParameter {$/;"	c
+deviceRoadmap	NeuroSim\InputParameter.h	/^	DeviceRoadmap deviceRoadmap;	\/* ITRS roadmap: HP or LSTP *\/$/;"	m	class:InputParameter
+processNode	NeuroSim\InputParameter.h	/^	int processNode;				\/* Process node (nm) *\/$/;"	m	class:InputParameter
+temperature	NeuroSim\InputParameter.h	/^	int temperature;				\/* The ambient temperature, Unit: K *\/$/;"	m	class:InputParameter
+MemCell	NeuroSim\MemCell.h	/^class MemCell {$/;"	c
+_MEMCELL_H_	NeuroSim\MemCell.h	40;"	d
+accessType	NeuroSim\MemCell.h	/^	CellAccessType accessType;	\/* Cell access type: CMOS, BJT, or diode *\/$/;"	m	class:MemCell
+accessVoltage	NeuroSim\MemCell.h	/^	double accessVoltage;$/;"	m	class:MemCell
+area	NeuroSim\MemCell.h	/^	double area;			\/* Cell area, Unit: F^2 *\/$/;"	m	class:MemCell
+aspectRatio	NeuroSim\MemCell.h	/^	double aspectRatio;		\/* Cell aspect ratio, H\/W *\/$/;"	m	class:MemCell
+capSRAMCell	NeuroSim\MemCell.h	/^	double capSRAMCell;$/;"	m	class:MemCell
+featureSize	NeuroSim\MemCell.h	/^	double featureSize;$/;"	m	class:MemCell
+heightInFeatureSize	NeuroSim\MemCell.h	/^	double heightInFeatureSize;	\/* Cell height, Unit: F *\/$/;"	m	class:MemCell
+memCellType	NeuroSim\MemCell.h	/^	Type::MemCellType memCellType;	\/* Memory cell type (like MRAM, PCRAM, etc.) *\/$/;"	m	class:MemCell
+minSenseVoltage	NeuroSim\MemCell.h	/^	double minSenseVoltage; \/* Minimum sense voltage *\/$/;"	m	class:MemCell
+multipleCells	NeuroSim\MemCell.h	/^	int multipleCells;	\/* Use multiple cells as one weight element to reduce the variation (only layout now) *\/$/;"	m	class:MemCell
+nonlinearIV	NeuroSim\MemCell.h	/^	bool nonlinearIV;	\/* Consider I-V nonlinearity or not (Currently this option is for cross-point array. It is hard to have this option in pseudo-crossbar since it has an access transistor and the transistor's resistance can be comparable to RRAM's resistance after considering the nonlinearity. In this case, we have to iteratively find both the resistance and Vw across RRAM.) *\/$/;"	m	class:MemCell
+nonlinearity	NeuroSim\MemCell.h	/^	double nonlinearity;	\/* Current at write voltage \/ current at 1\/2 write voltage *\/$/;"	m	class:MemCell
+processNode	NeuroSim\MemCell.h	/^	int processNode;        \/* Cell original process technology node, Unit: nm*\/$/;"	m	class:MemCell
+readPulseWidth	NeuroSim\MemCell.h	/^	double readPulseWidth;$/;"	m	class:MemCell
+readVoltage	NeuroSim\MemCell.h	/^	double readVoltage;$/;"	m	class:MemCell
+resCellAccess	NeuroSim\MemCell.h	/^	double resCellAccess;$/;"	m	class:MemCell
+resMemCellAvg	NeuroSim\MemCell.h	/^	double resMemCellAvg;	\/\/ At on-chip Vr (different than the Vr in the reported measurement data)$/;"	m	class:MemCell
+resMemCellAvgAtHalfVw	NeuroSim\MemCell.h	/^	double resMemCellAvgAtHalfVw;$/;"	m	class:MemCell
+resMemCellAvgAtVw	NeuroSim\MemCell.h	/^	double resMemCellAvgAtVw;$/;"	m	class:MemCell
+resMemCellOff	NeuroSim\MemCell.h	/^	double resMemCellOff;	\/\/ At on-chip Vr (different than the Vr in the reported measurement data)$/;"	m	class:MemCell
+resMemCellOffAtHalfVw	NeuroSim\MemCell.h	/^	double resMemCellOffAtHalfVw;$/;"	m	class:MemCell
+resMemCellOffAtVw	NeuroSim\MemCell.h	/^	double resMemCellOffAtVw;$/;"	m	class:MemCell
+resMemCellOn	NeuroSim\MemCell.h	/^	double resMemCellOn;	\/\/ At on-chip Vr (different than the Vr in the reported measurement data)$/;"	m	class:MemCell
+resMemCellOnAtHalfVw	NeuroSim\MemCell.h	/^	double resMemCellOnAtHalfVw;$/;"	m	class:MemCell
+resMemCellOnAtVw	NeuroSim\MemCell.h	/^	double resMemCellOnAtVw;$/;"	m	class:MemCell
+resistanceAvg	NeuroSim\MemCell.h	/^	double resistanceAvg;$/;"	m	class:MemCell
+resistanceOff	NeuroSim\MemCell.h	/^	double resistanceOff;	\/* Turn-off resistance *\/$/;"	m	class:MemCell
+resistanceOn	NeuroSim\MemCell.h	/^	double resistanceOn;	\/* Turn-on resistance *\/$/;"	m	class:MemCell
+widthAccessCMOS	NeuroSim\MemCell.h	/^	double widthAccessCMOS;	\/* The gate width of CMOS access transistor, Unit: F *\/$/;"	m	class:MemCell
+widthInFeatureSize	NeuroSim\MemCell.h	/^	double widthInFeatureSize;	\/* Cell width, Unit: F *\/$/;"	m	class:MemCell
+widthSRAMCellNMOS	NeuroSim\MemCell.h	/^	double widthSRAMCellNMOS;	\/* The gate width of NMOS in SRAM cells, Unit: F *\/$/;"	m	class:MemCell
+widthSRAMCellPMOS	NeuroSim\MemCell.h	/^	double widthSRAMCellPMOS;	\/* The gate width of PMOS in SRAM cells, Unit: F *\/$/;"	m	class:MemCell
+writePulseWidth	NeuroSim\MemCell.h	/^	double writePulseWidth;$/;"	m	class:MemCell
+writeVoltage	NeuroSim\MemCell.h	/^	double writeVoltage;$/;"	m	class:MemCell
+CalculateArea	NeuroSim\Mux.cpp	/^void Mux::CalculateArea(double _newHeight, double _newWidth, AreaModify _option){$/;"	f	class:Mux
+CalculateLatency	NeuroSim\Mux.cpp	/^void Mux::CalculateLatency(double _rampInput, double _capLoad, double numRead) {  \/\/ rampInput is from SL\/BL, not fron EN signal$/;"	f	class:Mux
+CalculatePower	NeuroSim\Mux.cpp	/^void Mux::CalculatePower(double numRead) {$/;"	f	class:Mux
+Initialize	NeuroSim\Mux.cpp	/^void Mux::Initialize(int _numInput, int _numSelection, double _resTg, bool _digital){$/;"	f	class:Mux
+Mux	NeuroSim\Mux.cpp	/^Mux::Mux(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit() {$/;"	f	class:Mux
+PrintProperty	NeuroSim\Mux.cpp	/^void Mux::PrintProperty(const char* str) {$/;"	f	class:Mux
+MUX_H_	NeuroSim\Mux.h	40;"	d
+Mux	NeuroSim\Mux.h	/^class Mux: public FunctionUnit {$/;"	c
+TgWidth	NeuroSim\Mux.h	/^	double TgWidth;$/;"	m	class:Mux
+capEnInvInput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capEnInvOutput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capLoad	NeuroSim\Mux.h	/^	double capLoad;$/;"	m	class:Mux
+capMuxInvInput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capMuxInvOutput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capNandInput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capNandOutput	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capTgDrain	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capTgGateN	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+capTgGateP	NeuroSim\Mux.h	/^	double capNandInput, capNandOutput, capEnInvInput, capEnInvOutput, capMuxInvInput, capMuxInvOutput, capTgGateN, capTgGateP, capTgDrain;$/;"	m	class:Mux
+cell	NeuroSim\Mux.h	/^	const MemCell& cell;$/;"	m	class:Mux
+digital	NeuroSim\Mux.h	/^	bool digital;$/;"	m	class:Mux
+initialized	NeuroSim\Mux.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:Mux
+inputParameter	NeuroSim\Mux.h	/^	const InputParameter& inputParameter;$/;"	m	class:Mux
+minDriverCurrent	NeuroSim\Mux.h	/^	double minDriverCurrent;$/;"	m	class:Mux
+numInput	NeuroSim\Mux.h	/^	int numInput;$/;"	m	class:Mux
+numRowTg	NeuroSim\Mux.h	/^	int numRowTg;$/;"	m	class:Mux
+numSelection	NeuroSim\Mux.h	/^	int numSelection;		\/* Number of Selections *\/$/;"	m	class:Mux
+rampInput	NeuroSim\Mux.h	/^	double rampInput, rampOutput;$/;"	m	class:Mux
+rampOutput	NeuroSim\Mux.h	/^	double rampInput, rampOutput;$/;"	m	class:Mux
+resTg	NeuroSim\Mux.h	/^	double resTg;$/;"	m	class:Mux
+tech	NeuroSim\Mux.h	/^	const Technology& tech;$/;"	m	class:Mux
+widthEnInvN	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthEnInvP	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthMuxInvN	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthMuxInvP	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthNandN	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthNandP	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthTgN	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthTgP	NeuroSim\Mux.h	/^	double widthNandN, widthNandP, widthEnInvN, widthEnInvP, widthTgN, widthTgP, widthMuxInvN, widthMuxInvP;$/;"	m	class:Mux
+widthTgShared	NeuroSim\Mux.h	/^	double widthTgShared;$/;"	m	class:Mux
+~Mux	NeuroSim\Mux.h	/^	virtual ~Mux() {}$/;"	f	class:Mux
+CalculateArea	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::CalculateArea(double _newWidth) {	\/\/ Just add up the area of all the components$/;"	f	class:ReadCircuit
+CalculateLatency	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::CalculateLatency(double numRead) {$/;"	f	class:ReadCircuit
+CalculatePower	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::CalculatePower(double numRead) {$/;"	f	class:ReadCircuit
+CalculateUnitArea	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::CalculateUnitArea() {$/;"	f	class:ReadCircuit
+Initialize	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::Initialize(ReadCircuitMode _mode, int _numReadCol, int _maxNumIntBit, SpikingMode _spikingMode, double _clkFreq) {$/;"	f	class:ReadCircuit
+PrintProperty	NeuroSim\ReadCircuit.cpp	/^void ReadCircuit::PrintProperty(const char* str) {$/;"	f	class:ReadCircuit
+ReadCircuit	NeuroSim\ReadCircuit.cpp	/^ReadCircuit::ReadCircuit(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit() {$/;"	f	class:ReadCircuit
+READCIRCUIT_H_	NeuroSim\ReadCircuit.h	40;"	d
+R_OSC_OFF	NeuroSim\ReadCircuit.h	/^	double Vhold, Vth, Vrow, Vcol, R_OSC_OFF;$/;"	m	class:ReadCircuit
+ReadCircuit	NeuroSim\ReadCircuit.h	/^class ReadCircuit: public FunctionUnit {$/;"	c
+Vcol	NeuroSim\ReadCircuit.h	/^	double Vhold, Vth, Vrow, Vcol, R_OSC_OFF;$/;"	m	class:ReadCircuit
+Vhold	NeuroSim\ReadCircuit.h	/^	double Vhold, Vth, Vrow, Vcol, R_OSC_OFF;$/;"	m	class:ReadCircuit
+Vrow	NeuroSim\ReadCircuit.h	/^	double Vhold, Vth, Vrow, Vcol, R_OSC_OFF;$/;"	m	class:ReadCircuit
+Vth	NeuroSim\ReadCircuit.h	/^	double Vhold, Vth, Vrow, Vcol, R_OSC_OFF;$/;"	m	class:ReadCircuit
+areaDff	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+areaReadBody	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+areaUnit	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+capDffInvInput	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capDffInvOutput	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capDffTgDrain	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capDffTgGateN	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capDffTgGateP	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capInput	NeuroSim\ReadCircuit.h	/^	double capInput;$/;"	m	class:ReadCircuit
+capInvInput	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capInvOutput	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capNmosDrain	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capNmosGate	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capNorInput	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capNorOutput	NeuroSim\ReadCircuit.h	/^	double capDffTgGateN, capDffTgGateP, capDffTgDrain, capDffInvInput, capDffInvOutput, capNorInput, capNorOutput;$/;"	m	class:ReadCircuit
+capPmosDrain	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capPmosGate	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capTgDrain	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capTgGateN	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+capTgGateP	NeuroSim\ReadCircuit.h	/^	double capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain, capPmosGate, capPmosDrain, capInvInput, capInvOutput;$/;"	m	class:ReadCircuit
+cell	NeuroSim\ReadCircuit.h	/^	const MemCell& cell;$/;"	m	class:ReadCircuit
+clkFreq	NeuroSim\ReadCircuit.h	/^	double clkFreq;$/;"	m	class:ReadCircuit
+hDff	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+hReadBody	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+hUnit	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+initialized	NeuroSim\ReadCircuit.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:ReadCircuit
+inputParameter	NeuroSim\ReadCircuit.h	/^	const InputParameter& inputParameter;$/;"	m	class:ReadCircuit
+maxNumIntBit	NeuroSim\ReadCircuit.h	/^	int maxNumIntBit;$/;"	m	class:ReadCircuit
+maxNumIntPerCycle	NeuroSim\ReadCircuit.h	/^	double maxNumIntPerCycle;$/;"	m	class:ReadCircuit
+mode	NeuroSim\ReadCircuit.h	/^	ReadCircuitMode mode;$/;"	m	class:ReadCircuit
+numDff	NeuroSim\ReadCircuit.h	/^	int numDff;$/;"	m	class:ReadCircuit
+numReadCol	NeuroSim\ReadCircuit.h	/^	int numReadCol;$/;"	m	class:ReadCircuit
+numRowUnit	NeuroSim\ReadCircuit.h	/^	int numUnitPerRow, numRowUnit;$/;"	m	class:ReadCircuit
+numUnitPerRow	NeuroSim\ReadCircuit.h	/^	int numUnitPerRow, numRowUnit;$/;"	m	class:ReadCircuit
+rampInput	NeuroSim\ReadCircuit.h	/^	double rampInput, rampOutput;$/;"	m	class:ReadCircuit
+rampOutput	NeuroSim\ReadCircuit.h	/^	double rampInput, rampOutput;$/;"	m	class:ReadCircuit
+spikingMode	NeuroSim\ReadCircuit.h	/^	SpikingMode spikingMode;$/;"	m	class:ReadCircuit
+tech	NeuroSim\ReadCircuit.h	/^	const Technology& tech;$/;"	m	class:ReadCircuit
+voltageIntThreshold	NeuroSim\ReadCircuit.h	/^	double voltageIntThreshold;$/;"	m	class:ReadCircuit
+wDff	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+wReadBody	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+wUnit	NeuroSim\ReadCircuit.h	/^	double areaUnit, hUnit, wUnit, areaReadBody, hReadBody, wReadBody, areaDff, hDff, wDff;$/;"	m	class:ReadCircuit
+widthDffInvN	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthDffInvP	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthDffNorN	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthDffNorP	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthDffTgN	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthDffTgP	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthInvN	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthInvP	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthNmos1	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos2	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos3	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos4	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos5	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos6	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos7	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthNmos8	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthPmos1	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthPmos3	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthPmos4	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthPmos5	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthPmos8	NeuroSim\ReadCircuit.h	/^	double widthNmos1, widthPmos1, widthNmos2, widthNmos3, widthPmos3, widthNmos4, widthPmos4, widthNmos5, widthPmos5, widthNmos6, widthNmos7, widthNmos8, widthPmos8;$/;"	m	class:ReadCircuit
+widthTgN	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+widthTgP	NeuroSim\ReadCircuit.h	/^	double widthDffTgN, widthDffTgP, widthDffInvN, widthDffInvP, widthDffNorN, widthDffNorP, widthTgN, widthTgP, widthInvN, widthInvP;$/;"	m	class:ReadCircuit
+~ReadCircuit	NeuroSim\ReadCircuit.h	/^	virtual ~ReadCircuit() {}$/;"	f	class:ReadCircuit
+CalculateArea	NeuroSim\RowDecoder.cpp	/^void RowDecoder::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:RowDecoder
+CalculateLatency	NeuroSim\RowDecoder.cpp	/^void RowDecoder::CalculateLatency(double _rampInput, double _capLoad1, double _capLoad2, double numRead, double numWrite) {$/;"	f	class:RowDecoder
+CalculatePower	NeuroSim\RowDecoder.cpp	/^void RowDecoder::CalculatePower(double numRead, double numWrite) {$/;"	f	class:RowDecoder
+Initialize	NeuroSim\RowDecoder.cpp	/^void RowDecoder::Initialize(DecoderMode _mode, int _numAddrRow, bool _MUX) {$/;"	f	class:RowDecoder
+PrintProperty	NeuroSim\RowDecoder.cpp	/^void RowDecoder::PrintProperty(const char* str) {$/;"	f	class:RowDecoder
+RowDecoder	NeuroSim\RowDecoder.cpp	/^RowDecoder::RowDecoder(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit(){$/;"	f	class:RowDecoder
+MUX	NeuroSim\RowDecoder.h	/^	bool MUX;	\/\/ MUX mode$/;"	m	class:RowDecoder
+ROWDECODER_H_	NeuroSim\RowDecoder.h	40;"	d
+RowDecoder	NeuroSim\RowDecoder.h	/^class RowDecoder: public FunctionUnit {$/;"	c
+capDriverInvInput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capDriverInvOutput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capInvInput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capInvOutput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capLoad1	NeuroSim\RowDecoder.h	/^	double capLoad1;	\/\/ REGULAR: general capLoad, MUX: the NMOS Tg gates$/;"	m	class:RowDecoder
+capLoad2	NeuroSim\RowDecoder.h	/^	double capLoad2;	\/\/ MUX: the PMOS Tg gates$/;"	m	class:RowDecoder
+capNandInput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capNandOutput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capNorInput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+capNorOutput	NeuroSim\RowDecoder.h	/^	double capInvInput, capInvOutput, capNandInput, capNandOutput, capNorInput, capNorOutput, capDriverInvInput, capDriverInvOutput;$/;"	m	class:RowDecoder
+cell	NeuroSim\RowDecoder.h	/^	const MemCell& cell;$/;"	m	class:RowDecoder
+initialized	NeuroSim\RowDecoder.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:RowDecoder
+inputParameter	NeuroSim\RowDecoder.h	/^	const InputParameter& inputParameter;$/;"	m	class:RowDecoder
+mode	NeuroSim\RowDecoder.h	/^	DecoderMode mode;	\/\/ ROW or COLUMN mode$/;"	m	class:RowDecoder
+numAddrRow	NeuroSim\RowDecoder.h	/^	int numAddrRow;		\/* Number of rows *\/$/;"	m	class:RowDecoder
+numColInv	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numColNand	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numColNor	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numInv	NeuroSim\RowDecoder.h	/^	int numInv, numNand, numNor, numMetalConnection;$/;"	m	class:RowDecoder
+numInvPerCol	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numInvPerRow	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+numMetalConnection	NeuroSim\RowDecoder.h	/^	int numInv, numNand, numNor, numMetalConnection;$/;"	m	class:RowDecoder
+numNand	NeuroSim\RowDecoder.h	/^	int numInv, numNand, numNor, numMetalConnection;$/;"	m	class:RowDecoder
+numNandPerCol	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numNandPerRow	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+numNor	NeuroSim\RowDecoder.h	/^	int numInv, numNand, numNor, numMetalConnection;$/;"	m	class:RowDecoder
+numNorPerCol	NeuroSim\RowDecoder.h	/^	int numColNor, numNorPerCol, numColNand, numNandPerCol, numColInv, numInvPerCol;$/;"	m	class:RowDecoder
+numNorPerRow	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+numRowInv	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+numRowNand	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+numRowNor	NeuroSim\RowDecoder.h	/^	int numRowNor, numNorPerRow, numRowNand, numNandPerRow, numRowInv, numInvPerRow;$/;"	m	class:RowDecoder
+rampInput	NeuroSim\RowDecoder.h	/^	double rampInput, rampOutput;$/;"	m	class:RowDecoder
+rampOutput	NeuroSim\RowDecoder.h	/^	double rampInput, rampOutput;$/;"	m	class:RowDecoder
+tech	NeuroSim\RowDecoder.h	/^	const Technology& tech;$/;"	m	class:RowDecoder
+widthDriverInvN	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthDriverInvP	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthInvN	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthInvP	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthNandN	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthNandP	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthNorN	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+widthNorP	NeuroSim\RowDecoder.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP, widthNorN, widthNorP, widthDriverInvN, widthDriverInvP;$/;"	m	class:RowDecoder
+~RowDecoder	NeuroSim\RowDecoder.h	/^	virtual ~RowDecoder() {}$/;"	f	class:RowDecoder
+CalculateArea	NeuroSim\ShiftAdd.cpp	/^void ShiftAdd::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:ShiftAdd
+CalculateLatency	NeuroSim\ShiftAdd.cpp	/^void ShiftAdd::CalculateLatency(double numRead) {$/;"	f	class:ShiftAdd
+CalculatePower	NeuroSim\ShiftAdd.cpp	/^void ShiftAdd::CalculatePower(double numRead) {$/;"	f	class:ShiftAdd
+Initialize	NeuroSim\ShiftAdd.cpp	/^void ShiftAdd::Initialize(int _numUnit, int _numAdderBit, double _clkFreq, SpikingMode _spikingMode, int _numReadPulse) {$/;"	f	class:ShiftAdd
+PrintProperty	NeuroSim\ShiftAdd.cpp	/^void ShiftAdd::PrintProperty(const char* str) {$/;"	f	class:ShiftAdd
+ShiftAdd	NeuroSim\ShiftAdd.cpp	/^ShiftAdd::ShiftAdd(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), adder(_inputParameter, _tech, _cell), dff(_inputParameter, _tech, _cell), FunctionUnit() {$/;"	f	class:ShiftAdd
+SHIFTADD_H_	NeuroSim\ShiftAdd.h	40;"	d
+ShiftAdd	NeuroSim\ShiftAdd.h	/^class ShiftAdd: public FunctionUnit {$/;"	c
+adder	NeuroSim\ShiftAdd.h	/^	Adder adder;$/;"	m	class:ShiftAdd
+cell	NeuroSim\ShiftAdd.h	/^	const MemCell& cell;$/;"	m	class:ShiftAdd
+clkFreq	NeuroSim\ShiftAdd.h	/^	double clkFreq;$/;"	m	class:ShiftAdd
+dff	NeuroSim\ShiftAdd.h	/^	DFF dff;$/;"	m	class:ShiftAdd
+initialized	NeuroSim\ShiftAdd.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:ShiftAdd
+inputParameter	NeuroSim\ShiftAdd.h	/^	const InputParameter& inputParameter;$/;"	m	class:ShiftAdd
+layoutWidth	NeuroSim\ShiftAdd.h	/^	double layoutWidth;$/;"	m	class:ShiftAdd
+numAdder	NeuroSim\ShiftAdd.h	/^	int numInv, numNand, numAdder, numDff;$/;"	m	class:ShiftAdd
+numAdderBit	NeuroSim\ShiftAdd.h	/^	int numAdderBit, numBitPerDff;$/;"	m	class:ShiftAdd
+numBitPerDff	NeuroSim\ShiftAdd.h	/^	int numAdderBit, numBitPerDff;$/;"	m	class:ShiftAdd
+numDff	NeuroSim\ShiftAdd.h	/^	int numInv, numNand, numAdder, numDff;$/;"	m	class:ShiftAdd
+numInv	NeuroSim\ShiftAdd.h	/^	int numInv, numNand, numAdder, numDff;$/;"	m	class:ShiftAdd
+numNand	NeuroSim\ShiftAdd.h	/^	int numInv, numNand, numAdder, numDff;$/;"	m	class:ShiftAdd
+numReadPulse	NeuroSim\ShiftAdd.h	/^	int numReadPulse;$/;"	m	class:ShiftAdd
+numUnit	NeuroSim\ShiftAdd.h	/^	int numUnit;$/;"	m	class:ShiftAdd
+rampInput	NeuroSim\ShiftAdd.h	/^	double rampInput, rampOutput;$/;"	m	class:ShiftAdd
+rampOutput	NeuroSim\ShiftAdd.h	/^	double rampInput, rampOutput;$/;"	m	class:ShiftAdd
+spikingMode	NeuroSim\ShiftAdd.h	/^	SpikingMode spikingMode;$/;"	m	class:ShiftAdd
+tech	NeuroSim\ShiftAdd.h	/^	const Technology& tech;$/;"	m	class:ShiftAdd
+widthInvN	NeuroSim\ShiftAdd.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP;$/;"	m	class:ShiftAdd
+widthInvP	NeuroSim\ShiftAdd.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP;$/;"	m	class:ShiftAdd
+widthNandN	NeuroSim\ShiftAdd.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP;$/;"	m	class:ShiftAdd
+widthNandP	NeuroSim\ShiftAdd.h	/^	double widthInvN, widthInvP, widthNandN, widthNandP;$/;"	m	class:ShiftAdd
+~ShiftAdd	NeuroSim\ShiftAdd.h	/^	virtual ~ShiftAdd() {}$/;"	f	class:ShiftAdd
+CalculateArea	NeuroSim\SubArray.cpp	/^void SubArray::CalculateArea() {  \/\/calculate layout area for total design$/;"	f	class:SubArray
+CalculateLatency	NeuroSim\SubArray.cpp	/^void SubArray::CalculateLatency(double _rampInput) {   \/\/calculate latency for different mode $/;"	f	class:SubArray
+CalculatePower	NeuroSim\SubArray.cpp	/^void SubArray::CalculatePower() {$/;"	f	class:SubArray
+Initialize	NeuroSim\SubArray.cpp	/^void SubArray::Initialize(int _numRow, int _numCol, double _unitWireRes){  \/\/initialization module$/;"	f	class:SubArray
+PrintProperty	NeuroSim\SubArray.cpp	/^void SubArray::PrintProperty() {$/;"	f	class:SubArray
+SubArray	NeuroSim\SubArray.cpp	/^SubArray::SubArray(InputParameter& _inputParameter, Technology& _tech, MemCell& _cell):$/;"	f	class:SubArray
+SUBARRAY_H_	NeuroSim\SubArray.h	40;"	d
+SubArray	NeuroSim\SubArray.h	/^class SubArray: public FunctionUnit {$/;"	c
+activityColWrite	NeuroSim\SubArray.h	/^	double activityColWrite;	\/\/ Activity for # of columns in the write$/;"	m	class:SubArray
+activityRowRead	NeuroSim\SubArray.h	/^	double activityRowRead;		\/\/ Activity for # of rows in the read$/;"	m	class:SubArray
+activityRowWrite	NeuroSim\SubArray.h	/^	double activityRowWrite;	\/\/ Activity for # of rows in the write$/;"	m	class:SubArray
+areaArray	NeuroSim\SubArray.h	/^	double areaArray;$/;"	m	class:SubArray
+avgWeightBit	NeuroSim\SubArray.h	/^	int avgWeightBit;		\/\/ Average weight for each synapse (value can range from 0 to numCellPerSynapse)$/;"	m	class:SubArray
+blSwitchMatrix	NeuroSim\SubArray.h	/^	SwitchMatrix    blSwitchMatrix;$/;"	m	class:SubArray
+capCellAccess	NeuroSim\SubArray.h	/^	double capCellAccess;	\/\/ Capacitance of access device, Unit: ohm$/;"	m	class:SubArray
+capCol	NeuroSim\SubArray.h	/^	double capCol;		\/\/ Capacitance of column, Unit: F$/;"	m	class:SubArray
+capRow1	NeuroSim\SubArray.h	/^	double capRow1;		\/\/ Capacitance of row1 (BL for 1T1R, WL for Cross-point), Unit: F$/;"	m	class:SubArray
+capRow2	NeuroSim\SubArray.h	/^	double capRow2;		\/\/ Capacitance of row2 (WL for 1T1R), Unit: F$/;"	m	class:SubArray
+cell	NeuroSim\SubArray.h	/^	MemCell& cell;$/;"	m	class:SubArray
+clkFreq	NeuroSim\SubArray.h	/^	double clkFreq;			\/\/ Clock frequency (Hz)$/;"	m	class:SubArray
+colDelay	NeuroSim\SubArray.h	/^	double colDelay;	\/\/ Column delay, Unit: s$/;"	m	class:SubArray
+digitalModeNeuro	NeuroSim\SubArray.h	/^	bool digitalModeNeuro;	\/\/ Digital RRAM in neuro mode$/;"	m	class:SubArray
+heightArray	NeuroSim\SubArray.h	/^	double heightArray;$/;"	m	class:SubArray
+initialized	NeuroSim\SubArray.h	/^	bool initialized;	\/\/ Initialization flag$/;"	m	class:SubArray
+inputParameter	NeuroSim\SubArray.h	/^	InputParameter& inputParameter;$/;"	m	class:SubArray
+lengthCol	NeuroSim\SubArray.h	/^	double lengthCol;	\/\/ Length of columns, Unit: m$/;"	m	class:SubArray
+lengthRow	NeuroSim\SubArray.h	/^	double lengthRow;	\/\/ Length of rows, Unit: m$/;"	m	class:SubArray
+maxNumIntBit	NeuroSim\SubArray.h	/^	int maxNumIntBit;		\/\/ Max # bits for the integrate-and-fire neuron$/;"	m	class:SubArray
+maxNumWritePulse	NeuroSim\SubArray.h	/^	int maxNumWritePulse;	\/\/ Max # of write pulses for the device$/;"	m	class:SubArray
+mux	NeuroSim\SubArray.h	/^	Mux     mux;$/;"	m	class:SubArray
+muxDecoder	NeuroSim\SubArray.h	/^	RowDecoder  muxDecoder;$/;"	m	class:SubArray
+numCellPerSynapse	NeuroSim\SubArray.h	/^	int numCellPerSynapse;  \/\/ Number of cells per synapse$/;"	m	class:SubArray
+numCol	NeuroSim\SubArray.h	/^	int numCol;			\/\/ Number of columns$/;"	m	class:SubArray
+numColMuxed	NeuroSim\SubArray.h	/^	int numColMuxed;	\/\/ How many columns share 1 read circuit (for neuro mode with analog RRAM) or 1 S\/A (for memory mode or neuro mode with digital RRAM)$/;"	m	class:SubArray
+numReadCellPerOperationNeuro	NeuroSim\SubArray.h	/^	int numReadCellPerOperationNeuro;   \/\/ Parameter for SRAM (use numBitPerCell cells to represent one D)$/;"	m	class:SubArray
+numReadPulse	NeuroSim\SubArray.h	/^	int numReadPulse;		\/\/ # of read pulses for the input vector$/;"	m	class:SubArray
+numRow	NeuroSim\SubArray.h	/^	int numRow;			\/\/ Number of rows$/;"	m	class:SubArray
+numWriteCellPerOperationNeuro	NeuroSim\SubArray.h	/^	int numWriteCellPerOperationNeuro;  \/\/ For multifunctional mode or neuro only mode$/;"	m	class:SubArray
+numWriteColMuxed	NeuroSim\SubArray.h	/^	int numWriteColMuxed;	\/\/ \/\/ How many columns share 1 write column decoder driver (for memory or neuro mode with digital RRAM)$/;"	m	class:SubArray
+numWritePulse	NeuroSim\SubArray.h	/^	double numWritePulse;	\/\/ Average number of write pulse$/;"	m	class:SubArray
+readCircuit	NeuroSim\SubArray.h	/^	ReadCircuit readCircuit;$/;"	m	class:SubArray
+readCircuitMode	NeuroSim\SubArray.h	/^	ReadCircuitMode readCircuitMode;$/;"	m	class:SubArray
+readDynamicEnergyArray	NeuroSim\SubArray.h	/^	double readDynamicEnergyArray, writeDynamicEnergyArray;$/;"	m	class:SubArray
+relaxArrayCellHeight	NeuroSim\SubArray.h	/^	bool relaxArrayCellHeight;	\/\/ true: relax the memory cell height to match the height of periperal circuit unit that connects to the row (ex: standard cell height in the last stage of row decoder) if the latter is larger$/;"	m	class:SubArray
+relaxArrayCellWidth	NeuroSim\SubArray.h	/^	bool relaxArrayCellWidth;	\/\/ true: relax the memory cell width to match the width of periperal circuit unit that connects to the column (ex: pass gate width in the column mux) if the latter is larger$/;"	m	class:SubArray
+resCellAccess	NeuroSim\SubArray.h	/^	double resCellAccess;	\/\/ Resistance of access device, Unit: ohm$/;"	m	class:SubArray
+resCol	NeuroSim\SubArray.h	/^	double resCol;		\/\/ Column resistance, Unit: ohm$/;"	m	class:SubArray
+resRow	NeuroSim\SubArray.h	/^	double resRow;		\/\/ Row resistance, Unit: ohm$/;"	m	class:SubArray
+shiftAdd	NeuroSim\SubArray.h	/^	ShiftAdd shiftAdd;$/;"	m	class:SubArray
+shiftAddEnable	NeuroSim\SubArray.h	/^	bool shiftAddEnable;    \/\/ 0 for partition because the shift-and-add circuit will be after the last A&R stage$/;"	m	class:SubArray
+slSwitchMatrix	NeuroSim\SubArray.h	/^	SwitchMatrix    slSwitchMatrix;$/;"	m	class:SubArray
+spikingMode	NeuroSim\SubArray.h	/^	SpikingMode spikingMode;	\/\/ NONSPIKING: input data using pulses in binary representation$/;"	m	class:SubArray
+tech	NeuroSim\SubArray.h	/^	Technology& tech;$/;"	m	class:SubArray
+unitWireRes	NeuroSim\SubArray.h	/^	double unitWireRes;	\/\/ Unit wire resistance, Unit ohm\/m$/;"	m	class:SubArray
+widthArray	NeuroSim\SubArray.h	/^	double widthArray;$/;"	m	class:SubArray
+wlDecoder	NeuroSim\SubArray.h	/^	RowDecoder  wlDecoder;$/;"	m	class:SubArray
+wlDecoderOutput	NeuroSim\SubArray.h	/^	WLDecoderOutput wlDecoderOutput;$/;"	m	class:SubArray
+wlSwitchMatrix	NeuroSim\SubArray.h	/^	SwitchMatrix    wlSwitchMatrix;$/;"	m	class:SubArray
+writeDynamicEnergyArray	NeuroSim\SubArray.h	/^	double readDynamicEnergyArray, writeDynamicEnergyArray;$/;"	m	class:SubArray
+~SubArray	NeuroSim\SubArray.h	/^	virtual ~SubArray() {}$/;"	f	class:SubArray
+CalculateArea	NeuroSim\SwitchMatrix.cpp	/^void SwitchMatrix::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:SwitchMatrix
+CalculateLatency	NeuroSim\SwitchMatrix.cpp	/^void SwitchMatrix::CalculateLatency(double _rampInput, double _capLoad, double _resLoad, double numRead, double numWrite) {	\/\/ For simplicity, assume shift register is ideal$/;"	f	class:SwitchMatrix
+CalculatePower	NeuroSim\SwitchMatrix.cpp	/^void SwitchMatrix::CalculatePower(double numRead, double numWrite) {$/;"	f	class:SwitchMatrix
+Initialize	NeuroSim\SwitchMatrix.cpp	/^void SwitchMatrix::Initialize(int _mode, int _numOutput, double _resTg, double _activityRowRead, double _activityColWrite, int _numWriteCellPerOperationNeuro, double _numWritePulse, double _clkFreq){$/;"	f	class:SwitchMatrix
+PrintProperty	NeuroSim\SwitchMatrix.cpp	/^void SwitchMatrix::PrintProperty(const char* str) {$/;"	f	class:SwitchMatrix
+SwitchMatrix	NeuroSim\SwitchMatrix.cpp	/^SwitchMatrix::SwitchMatrix(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), dff(_inputParameter, _tech, _cell), FunctionUnit() {$/;"	f	class:SwitchMatrix
+SWITCHMATRIX_H_	NeuroSim\SwitchMatrix.h	40;"	d
+SwitchMatrix	NeuroSim\SwitchMatrix.h	/^class SwitchMatrix: public FunctionUnit {$/;"	c
+TgHeight	NeuroSim\SwitchMatrix.h	/^	double TgHeight, TgWidth;$/;"	m	class:SwitchMatrix
+TgWidth	NeuroSim\SwitchMatrix.h	/^	double TgHeight, TgWidth;$/;"	m	class:SwitchMatrix
+activityColWrite	NeuroSim\SwitchMatrix.h	/^	double activityColWrite;$/;"	m	class:SwitchMatrix
+activityRowRead	NeuroSim\SwitchMatrix.h	/^	double activityRowRead;$/;"	m	class:SwitchMatrix
+capLoad	NeuroSim\SwitchMatrix.h	/^	double capLoad;$/;"	m	class:SwitchMatrix
+capTgDrain	NeuroSim\SwitchMatrix.h	/^	double capTgDrain, capTgGateN, capTgGateP;$/;"	m	class:SwitchMatrix
+capTgGateN	NeuroSim\SwitchMatrix.h	/^	double capTgDrain, capTgGateN, capTgGateP;$/;"	m	class:SwitchMatrix
+capTgGateP	NeuroSim\SwitchMatrix.h	/^	double capTgDrain, capTgGateN, capTgGateP;$/;"	m	class:SwitchMatrix
+cell	NeuroSim\SwitchMatrix.h	/^	const MemCell& cell;$/;"	m	class:SwitchMatrix
+clkFreq	NeuroSim\SwitchMatrix.h	/^	double clkFreq;$/;"	m	class:SwitchMatrix
+dff	NeuroSim\SwitchMatrix.h	/^	DFF dff;$/;"	m	class:SwitchMatrix
+initialized	NeuroSim\SwitchMatrix.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:SwitchMatrix
+inputParameter	NeuroSim\SwitchMatrix.h	/^	const InputParameter& inputParameter;$/;"	m	class:SwitchMatrix
+mode	NeuroSim\SwitchMatrix.h	/^	int mode;$/;"	m	class:SwitchMatrix
+numColTgPair	NeuroSim\SwitchMatrix.h	/^	int numRowTgPair, numColTgPair;$/;"	m	class:SwitchMatrix
+numOutput	NeuroSim\SwitchMatrix.h	/^	int numOutput;$/;"	m	class:SwitchMatrix
+numRowTgPair	NeuroSim\SwitchMatrix.h	/^	int numRowTgPair, numColTgPair;$/;"	m	class:SwitchMatrix
+numWriteCellPerOperationNeuro	NeuroSim\SwitchMatrix.h	/^	int numWriteCellPerOperationNeuro;$/;"	m	class:SwitchMatrix
+numWritePulse	NeuroSim\SwitchMatrix.h	/^	double numWritePulse;$/;"	m	class:SwitchMatrix
+rampInput	NeuroSim\SwitchMatrix.h	/^	double rampInput, rampOutput;$/;"	m	class:SwitchMatrix
+rampOutput	NeuroSim\SwitchMatrix.h	/^	double rampInput, rampOutput;$/;"	m	class:SwitchMatrix
+resLoad	NeuroSim\SwitchMatrix.h	/^	double resLoad;$/;"	m	class:SwitchMatrix
+resTg	NeuroSim\SwitchMatrix.h	/^	double resTg;$/;"	m	class:SwitchMatrix
+tech	NeuroSim\SwitchMatrix.h	/^	const Technology& tech;$/;"	m	class:SwitchMatrix
+widthTgN	NeuroSim\SwitchMatrix.h	/^	double widthTgN, widthTgP;$/;"	m	class:SwitchMatrix
+widthTgP	NeuroSim\SwitchMatrix.h	/^	double widthTgN, widthTgP;$/;"	m	class:SwitchMatrix
+~SwitchMatrix	NeuroSim\SwitchMatrix.h	/^	virtual ~SwitchMatrix() {}$/;"	f	class:SwitchMatrix
+Initialize	NeuroSim\Technology.cpp	/^void Technology::Initialize(int _featureSizeInNano, DeviceRoadmap _deviceRoadmap) {$/;"	f	class:Technology
+PrintProperty	NeuroSim\Technology.cpp	/^void Technology::PrintProperty() {$/;"	f	class:Technology
+Technology	NeuroSim\Technology.cpp	/^Technology::Technology() {$/;"	f	class:Technology
+PitchFin	NeuroSim\Technology.h	/^	double PitchFin;	\/* Fin pitch, Unit: m *\/$/;"	m	class:Technology
+RRAMFeatureSize	NeuroSim\Technology.h	/^	double RRAMFeatureSize;	\/* Process feature size of RRAM, Unit: m *\/$/;"	m	class:Technology
+TECHNOLOGY_H_	NeuroSim\Technology.h	40;"	d
+Technology	NeuroSim\Technology.h	/^class Technology {$/;"	c
+buildInPotential	NeuroSim\Technology.h	/^	double buildInPotential;	\/* Bottom junction built-in potential(PB in BSIM4 model), Unit: V *\/	$/;"	m	class:Technology
+capDrainToChannel	NeuroSim\Technology.h	/^	double capDrainToChannel;	\/* Junction drain to channel capacitance, Cjswg, Unit: F\/m *\/$/;"	m	class:Technology
+capFringe	NeuroSim\Technology.h	/^	double capFringe;		\/* Fringe capacitance, Unit: F\/m *\/$/;"	m	class:Technology
+capIdealGate	NeuroSim\Technology.h	/^	double capIdealGate;	\/* Ideal gate capacitance, Unit: F\/m *\/$/;"	m	class:Technology
+capJunction	NeuroSim\Technology.h	/^	double capJunction;		\/* Junction bottom capacitance, Cj0, Unit: F\/m^2 *\/$/;"	m	class:Technology
+capOverlap	NeuroSim\Technology.h	/^	double capOverlap;		\/* Overlap capacitance, Cover in MASTAR, Unit: F\/m *\/$/;"	m	class:Technology
+capPolywire	NeuroSim\Technology.h	/^	double capPolywire;	\/* Poly wire capacitance, Unit: F\/m *\/$/;"	m	class:Technology
+capSidewall	NeuroSim\Technology.h	/^	double capSidewall;		\/* Junction sidewall capacitance, Cjsw, Unit: F\/m *\/$/;"	m	class:Technology
+currentOffNmos	NeuroSim\Technology.h	/^	double currentOffNmos[101];	\/* NMOS off current (from 300K to 400K), Unit: A\/m *\/$/;"	m	class:Technology
+currentOffPmos	NeuroSim\Technology.h	/^	double currentOffPmos[101]; \/* PMOS off current (from 300K to 400K), Unit: A\/m *\/$/;"	m	class:Technology
+currentOnNmos	NeuroSim\Technology.h	/^	double currentOnNmos[101];		\/* NMOS saturation current, Unit: A\/m *\/$/;"	m	class:Technology
+currentOnPmos	NeuroSim\Technology.h	/^	double currentOnPmos[101];		\/* PMOS saturation current, Unit: A\/m *\/$/;"	m	class:Technology
+current_gmNmos	NeuroSim\Technology.h	/^    double current_gmNmos;		\/* NMOS current at 0.7*vdd for gm calculation, Unit: A\/m\/V*\/ $/;"	m	class:Technology
+current_gmPmos	NeuroSim\Technology.h	/^    double current_gmPmos;		\/* PMOS current at 0.7*vdd for gm calculation, Unit: A\/m\/V*\/ $/;"	m	class:Technology
+deviceRoadmap	NeuroSim\Technology.h	/^	DeviceRoadmap deviceRoadmap;	\/* HP or LP *\/$/;"	m	class:Technology
+effectiveResistanceMultiplier	NeuroSim\Technology.h	/^	double effectiveResistanceMultiplier;	\/* Extra resistance due to vdsat *\/$/;"	m	class:Technology
+featureSize	NeuroSim\Technology.h	/^	double featureSize;	\/* Process feature size, Unit: m *\/$/;"	m	class:Technology
+featureSizeInNano	NeuroSim\Technology.h	/^	int featureSizeInNano; \/*Process feature size, Unit: nm *\/$/;"	m	class:Technology
+heightFin	NeuroSim\Technology.h	/^	double heightFin;	\/* Fin height, Unit: m *\/$/;"	m	class:Technology
+initialized	NeuroSim\Technology.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:Technology
+phyGateLength	NeuroSim\Technology.h	/^	double phyGateLength;	\/* Physical gate length, Unit: m *\/$/;"	m	class:Technology
+pnSizeRatio	NeuroSim\Technology.h	/^	double pnSizeRatio;		\/* PMOS to NMOS size ratio *\/$/;"	m	class:Technology
+vdd	NeuroSim\Technology.h	/^	double vdd;			\/* Supply voltage, Unit: V *\/$/;"	m	class:Technology
+vth	NeuroSim\Technology.h	/^	double vth;				\/* Threshold voltage, Unit: V *\/$/;"	m	class:Technology
+widthFin	NeuroSim\Technology.h	/^	double widthFin;	\/* Fin width, Unit: m *\/$/;"	m	class:Technology
+~Technology	NeuroSim\Technology.h	/^	virtual ~Technology() {}$/;"	f	class:Technology
+CalculateArea	NeuroSim\WLDecoderOutput.cpp	/^void WLDecoderOutput::CalculateArea(double _newHeight, double _newWidth, AreaModify _option) {$/;"	f	class:WLDecoderOutput
+CalculateLatency	NeuroSim\WLDecoderOutput.cpp	/^void WLDecoderOutput::CalculateLatency(double _rampInput, double _capLoad, double _resLoad, double numRead, double numWrite) {$/;"	f	class:WLDecoderOutput
+CalculatePower	NeuroSim\WLDecoderOutput.cpp	/^void WLDecoderOutput::CalculatePower(double numRead, double numWrite) {$/;"	f	class:WLDecoderOutput
+Initialize	NeuroSim\WLDecoderOutput.cpp	/^void WLDecoderOutput::Initialize(int _numWLRow, bool _multifunctional, bool _neuro) {$/;"	f	class:WLDecoderOutput
+PrintProperty	NeuroSim\WLDecoderOutput.cpp	/^void WLDecoderOutput::PrintProperty(const char* str) {$/;"	f	class:WLDecoderOutput
+WLDecoderOutput	NeuroSim\WLDecoderOutput.cpp	/^WLDecoderOutput::WLDecoderOutput(const InputParameter& _inputParameter, const Technology& _tech, const MemCell& _cell): inputParameter(_inputParameter), tech(_tech), cell(_cell), FunctionUnit(){$/;"	f	class:WLDecoderOutput
+WLDecoderOutput	NeuroSim\WLDecoderOutput.h	/^class WLDecoderOutput: public FunctionUnit {$/;"	c
+WLDecoderOutput_H_	NeuroSim\WLDecoderOutput.h	40;"	d
+capInvInput	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capInvOutput	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capLoad	NeuroSim\WLDecoderOutput.h	/^	double capLoad;	\/* Output capacitance, unit: F *\/$/;"	m	class:WLDecoderOutput
+capNmosDrain	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capNmosGate	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capNorInput	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capNorOutput	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capTgDrain	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capTgGateN	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+capTgGateP	NeuroSim\WLDecoderOutput.h	/^	double capNorInput, capNorOutput, capInvInput, capInvOutput, capTgGateN, capTgGateP, capTgDrain, capNmosGate, capNmosDrain;$/;"	m	class:WLDecoderOutput
+cell	NeuroSim\WLDecoderOutput.h	/^	const MemCell& cell;$/;"	m	class:WLDecoderOutput
+initialized	NeuroSim\WLDecoderOutput.h	/^	bool initialized;	\/* Initialization flag *\/$/;"	m	class:WLDecoderOutput
+inputParameter	NeuroSim\WLDecoderOutput.h	/^	const InputParameter& inputParameter;$/;"	m	class:WLDecoderOutput
+multifunctional	NeuroSim\WLDecoderOutput.h	/^	bool multifunctional;$/;"	m	class:WLDecoderOutput
+neuro	NeuroSim\WLDecoderOutput.h	/^	bool neuro;$/;"	m	class:WLDecoderOutput
+numWLRow	NeuroSim\WLDecoderOutput.h	/^	int numWLRow;$/;"	m	class:WLDecoderOutput
+rampInput	NeuroSim\WLDecoderOutput.h	/^	double rampInput, rampOutput;$/;"	m	class:WLDecoderOutput
+rampOutput	NeuroSim\WLDecoderOutput.h	/^	double rampInput, rampOutput;$/;"	m	class:WLDecoderOutput
+resLoad	NeuroSim\WLDecoderOutput.h	/^	double resLoad;	\/* Output resistance, unit: ohm *\/$/;"	m	class:WLDecoderOutput
+resTg	NeuroSim\WLDecoderOutput.h	/^	double resTg;$/;"	m	class:WLDecoderOutput
+tech	NeuroSim\WLDecoderOutput.h	/^	const Technology& tech;$/;"	m	class:WLDecoderOutput
+widthInvN	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthInvP	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthNmos	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthNorN	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthNorP	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthTgN	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+widthTgP	NeuroSim\WLDecoderOutput.h	/^	double widthNorN, widthNorP, widthInvN, widthInvP, widthTgN, widthTgP, widthNmos;$/;"	m	class:WLDecoderOutput
+~WLDecoderOutput	NeuroSim\WLDecoderOutput.h	/^	virtual ~WLDecoderOutput() {}$/;"	f	class:WLDecoderOutput
+AVG_RATIO_LEAK_2INPUT_NAND	NeuroSim\constant.h	66;"	d
+AVG_RATIO_LEAK_2INPUT_NOR	NeuroSim\constant.h	68;"	d
+AVG_RATIO_LEAK_3INPUT_NAND	NeuroSim\constant.h	67;"	d
+AVG_RATIO_LEAK_3INPUT_NOR	NeuroSim\constant.h	69;"	d
+COL_MODE	NeuroSim\constant.h	84;"	d
+CONSTANT_H_	NeuroSim\constant.h	40;"	d
+CONTACT_SIZE	NeuroSim\constant.h	58;"	d
+HEIGHT_WIDTH_RATIO_LIMIT	NeuroSim\constant.h	79;"	d
+INV	NeuroSim\constant.h	42;"	d
+IR_DROP_TOLERANCE	NeuroSim\constant.h	77;"	d
+M2_PITCH	NeuroSim\constant.h	63;"	d
+M3_PITCH	NeuroSim\constant.h	64;"	d
+MAX_NMOS_SIZE	NeuroSim\constant.h	49;"	d
+MAX_TRANSISTOR_HEIGHT	NeuroSim\constant.h	52;"	d
+MIN_GAP_BET_CONTACT_POLY	NeuroSim\constant.h	57;"	d
+MIN_GAP_BET_FIELD_POLY	NeuroSim\constant.h	61;"	d
+MIN_GAP_BET_GATE_POLY	NeuroSim\constant.h	56;"	d
+MIN_GAP_BET_P_AND_N_DIFFS	NeuroSim\constant.h	54;"	d
+MIN_GAP_BET_SAME_TYPE_DIFFS	NeuroSim\constant.h	55;"	d
+MIN_NMOS_SIZE	NeuroSim\constant.h	50;"	d
+MIN_POLY_EXT_DIFF	NeuroSim\constant.h	60;"	d
+MIN_WIDTH_POWER_RAIL	NeuroSim\constant.h	59;"	d
+NAND	NeuroSim\constant.h	44;"	d
+NMOS	NeuroSim\constant.h	46;"	d
+NOR	NeuroSim\constant.h	43;"	d
+PMOS	NeuroSim\constant.h	47;"	d
+POLY_WIDTH	NeuroSim\constant.h	62;"	d
+RATIO_READ_THRESHOLD_VS_VOLTAGE	NeuroSim\constant.h	81;"	d
+ROW_MODE	NeuroSim\constant.h	83;"	d
+W_SENSE_EN	NeuroSim\constant.h	74;"	d
+W_SENSE_ISO	NeuroSim\constant.h	73;"	d
+W_SENSE_MUX	NeuroSim\constant.h	75;"	d
+W_SENSE_N	NeuroSim\constant.h	72;"	d
+W_SENSE_P	NeuroSim\constant.h	71;"	d
+CalculateDrainCap	NeuroSim\formula.cpp	/^double CalculateDrainCap($/;"	f
+CalculateGateArea	NeuroSim\formula.cpp	/^double CalculateGateArea(	\/\/ Calculate layout area and width of logic gate given fixed layout height$/;"	f
+CalculateGateCap	NeuroSim\formula.cpp	/^double CalculateGateCap(double width, Technology tech) {$/;"	f
+CalculateGateCapacitance	NeuroSim\formula.cpp	/^void CalculateGateCapacitance($/;"	f
+CalculateGateLeakage	NeuroSim\formula.cpp	/^double CalculateGateLeakage($/;"	f
+CalculateOnResistance	NeuroSim\formula.cpp	/^double CalculateOnResistance(double width, int type, double temperature, Technology tech) {$/;"	f
+CalculatePassGateArea	NeuroSim\formula.cpp	/^double CalculatePassGateArea(	\/\/ Calculate layout area, height and width of pass gate given the number of folding on the pass gate width$/;"	f
+CalculateTransconductance	NeuroSim\formula.cpp	/^double CalculateTransconductance(double width, int type, Technology tech) {$/;"	f
+NonlinearResistance	NeuroSim\formula.cpp	/^double NonlinearResistance(double R, double NL, double Vw, double Vr, double V) {	\/\/ Nonlinearity is the current ratio between Vw and V, and R means the resistance at Vr$/;"	f
+horowitz	NeuroSim\formula.cpp	/^double horowitz(double tr, double beta, double rampInput, double *rampOutput) {$/;"	f
+MAX	NeuroSim\formula.h	44;"	d
+MIN	NeuroSim\formula.h	45;"	d
+NEUROSIM_FORMULA_H_	NeuroSim\formula.h	40;"	d
+AreaModify	NeuroSim\typedef.h	/^enum AreaModify$/;"	g
+CMOS	NeuroSim\typedef.h	/^	CMOS,		\/* Normal read circuit *\/$/;"	e	enum:ReadCircuitMode
+CMOS_access	NeuroSim\typedef.h	/^	CMOS_access,$/;"	e	enum:CellAccessType
+CellAccessType	NeuroSim\typedef.h	/^enum CellAccessType$/;"	g
+DecoderMode	NeuroSim\typedef.h	/^enum DecoderMode$/;"	g
+DeviceRoadmap	NeuroSim\typedef.h	/^enum DeviceRoadmap$/;"	g
+HP	NeuroSim\typedef.h	/^	HP,		\/* High performance *\/$/;"	e	enum:DeviceRoadmap
+LSTP	NeuroSim\typedef.h	/^	LSTP	\/* Low standby power *\/$/;"	e	enum:DeviceRoadmap
+MAGIC	NeuroSim\typedef.h	/^	MAGIC,		\/* Use magic folding based on the original area *\/$/;"	e	enum:AreaModify
+MemCellType	NeuroSim\typedef.h	/^	enum MemCellType {$/;"	g	namespace:Type
+NONE	NeuroSim\typedef.h	/^	NONE,		\/* No action, just use the original area calculation *\/$/;"	e	enum:AreaModify
+NONSPIKING	NeuroSim\typedef.h	/^	NONSPIKING,	\/* Binary format *\/$/;"	e	enum:SpikingMode
+OSCILLATION	NeuroSim\typedef.h	/^	OSCILLATION	\/* NbO2 *\/$/;"	e	enum:ReadCircuitMode
+OVERRIDE	NeuroSim\typedef.h	/^	OVERRIDE	\/* directly modify the height and width and calculate new area *\/$/;"	e	enum:AreaModify
+REGULAR_COL	NeuroSim\typedef.h	/^	REGULAR_COL,	\/* Regular column mode *\/$/;"	e	enum:DecoderMode
+REGULAR_ROW	NeuroSim\typedef.h	/^	REGULAR_ROW,	\/* Regular row mode *\/$/;"	e	enum:DecoderMode
+RRAM	NeuroSim\typedef.h	/^		RRAM$/;"	e	enum:Type::MemCellType
+ReadCircuitMode	NeuroSim\typedef.h	/^enum ReadCircuitMode$/;"	g
+SPIKING	NeuroSim\typedef.h	/^	SPIKING$/;"	e	enum:SpikingMode
+SRAM	NeuroSim\typedef.h	/^		SRAM,$/;"	e	enum:Type::MemCellType
+SpikingMode	NeuroSim\typedef.h	/^enum SpikingMode$/;"	g
+TYPEDEF_H_	NeuroSim\typedef.h	40;"	d
+Type	NeuroSim\typedef.h	/^namespace Type {	\/\/ To prevent name collision$/;"	n
+none_access	NeuroSim\typedef.h	/^	none_access$/;"	e	enum:CellAccessType
+Param	Param.cpp	/^Param::Param() {$/;"	f	class:Param
+BWthreshold	Param.h	/^	double BWthreshold; \/\/ The black and white threshold for numBitInput=1$/;"	m	class:Param
+Hthreshold	Param.h	/^	double Hthreshold;	\/\/ The spiking threshold for the hidden layer (da1 in Train.cpp and Test.cpp)$/;"	m	class:Param
+NeuroSimDynamicPerformance	Param.h	/^	bool NeuroSimDynamicPerformance; \/\/ Report the dynamic performance (latency and energy) in NeuroSim or not$/;"	m	class:Param
+PARAM_H_	Param.h	40;"	d
+Param	Param.h	/^class Param {$/;"	c
+alpha1	Param.h	/^	double alpha1;		\/\/ Learning rate for the synapses from input to hidden layer$/;"	m	class:Param
+alpha2	Param.h	/^	double alpha2;		\/\/ Learning rate for the synapses from hidden to output layer$/;"	m	class:Param
+arrayWireWidth	Param.h	/^	double arrayWireWidth;	\/\/ Array wire width (nm)$/;"	m	class:Param
+clkFreq	Param.h	/^	double clkFreq;		\/\/ Clock frequency (Hz)$/;"	m	class:Param
+interNumEpochs	Param.h	/^	int interNumEpochs;	\/\/ Internal number of epochs (print out the results every interNumEpochs)$/;"	m	class:Param
+maxWeight	Param.h	/^	double maxWeight;	\/\/ Upper bound of weight value$/;"	m	class:Param
+minWeight	Param.h	/^	double minWeight;	\/\/ Lower bound of weight value$/;"	m	class:Param
+nHide	Param.h	/^	int nHide;      \/\/ # of neurons in hidden layer$/;"	m	class:Param
+nHide_0	Param.h	/^	int nHide_0;      \/\/ # of neurons in hidden layer in padding method	$/;"	m	class:Param
+nInput	Param.h	/^	int nInput;     \/\/ # of neurons in input layer$/;"	m	class:Param
+nInput_0	Param.h	/^	int nInput_0;     \/\/ # of neurons in input layer in padding method$/;"	m	class:Param
+nOutput	Param.h	/^	int nOutput;	\/\/ # of neurons in output layer$/;"	m	class:Param
+numBitInput	Param.h	/^	int numBitInput;		\/\/ # of bits of the input data (=1 for black and white data)$/;"	m	class:Param
+numBitPartialSum	Param.h	/^	int numBitPartialSum;	\/\/ # of bits of the digital output (partial weighted sum output)$/;"	m	class:Param
+numColMuxed	Param.h	/^	int numColMuxed;	\/\/ How many columns share 1 read circuit (for analog RRAM) or 1 S\/A (for digital RRAM)$/;"	m	class:Param
+numInputLevel	Param.h	/^	int numInputLevel;	\/\/ # of levels of the input data$/;"	m	class:Param
+numMnistTestImages	Param.h	/^	int numMnistTestImages;	\/\/ # of testing images in MNIST$/;"	m	class:Param
+numMnistTestImages_0	Param.h	/^	int numMnistTestImages_0;	\/\/ # of testing images in MNIST padding$/;"	m	class:Param
+numMnistTrainImages	Param.h	/^	int numMnistTrainImages;\/\/ # of training images in MNIST$/;"	m	class:Param
+numTrainImagesPerEpoch	Param.h	/^	int numTrainImagesPerEpoch;	\/\/ # of training images per epoch$/;"	m	class:Param
+numWeightBit	Param.h	/^	int numWeightBit;	\/\/ # of weight bits for pure algorithm (the # of weight bits for the device should be specified in numBitLTP and numBitLTD in Cell.cpp)$/;"	m	class:Param
+numWriteColMuxed	Param.h	/^	int numWriteColMuxed;	\/\/ Time multiplexing during write operation$/;"	m	class:Param
+pSumMaxHardware	Param.h	/^	int pSumMaxHardware;	\/\/ Max digital output value of partial weighted sum$/;"	m	class:Param
+processNode	Param.h	/^	int processNode;	\/\/ Technology node (nm)$/;"	m	class:Param
+relaxArrayCellHeight	Param.h	/^	bool relaxArrayCellHeight;	\/\/ True: relax the array cell height to standard logic cell height in the synaptic array$/;"	m	class:Param
+relaxArrayCellWidth	Param.h	/^	bool relaxArrayCellWidth;	\/\/ True: relax the array cell width to standard logic cell width in the synaptic array$/;"	m	class:Param
+totalNumEpochs	Param.h	/^	int totalNumEpochs;	\/\/ Total number of epochs$/;"	m	class:Param
+useHardwareInTestingFF	Param.h	/^	bool useHardwareInTestingFF;    \/\/ Use hardware in the feed forward part of testing or not (true: realistic hardware, false: ideal software)$/;"	m	class:Param
+useHardwareInTraining	Param.h	/^	bool useHardwareInTraining;		\/\/ Use hardware in the training or not$/;"	m	class:Param
+useHardwareInTrainingFF	Param.h	/^	bool useHardwareInTrainingFF;   \/\/ Use hardware in the feed forward part of training or not (true: realistic hardware, false: ideal software)$/;"	m	class:Param
+useHardwareInTrainingWU	Param.h	/^	bool useHardwareInTrainingWU;   \/\/ Use hardware in the weight update part of training or not (true: realistic hardware, false: ideal software)$/;"	m	class:Param
+writeEnergyReport	Param.h	/^	bool writeEnergyReport;	\/\/ Report write energy calculation or not$/;"	m	class:Param
+Validate	Test.cpp	/^void Validate(int ispadding) {$/;"	f
+TEST_H_	Test.h	40;"	d
+Train	Train.cpp	/^void Train(\/*const int numTrain, const int epochs*\/int ispadding) {$/;"	f
+TRAIN_H_	Train.h	40;"	d
+InvMeasuredLTD	formula.cpp	/^double InvMeasuredLTD(double conductance, int maxNumLevel, std::vector<double>& dataConductanceLTD) {$/;"	f
+InvMeasuredLTP	formula.cpp	/^double InvMeasuredLTP(double conductance, int maxNumLevel, std::vector<double>& dataConductanceLTP) {$/;"	f
+InvNonlinearWeight	formula.cpp	/^double InvNonlinearWeight(double conductance, int maxNumLevel, double A, double B, double minConductance) {$/;"	f
+MeasuredLTD	formula.cpp	/^double MeasuredLTD(double xPulse, int maxNumLevel, std::vector<double>& dataConductanceLTD) {$/;"	f
+MeasuredLTP	formula.cpp	/^double MeasuredLTP(double xPulse, int maxNumLevel, std::vector<double>& dataConductanceLTP) {$/;"	f
+NonlinearConductance	formula.cpp	/^double NonlinearConductance(double C, double NL, double Vw, double Vr, double V) {   \/\/ Nonlinearity is the current ratio between Vw and V, and C means the resistance at Vr$/;"	f
+NonlinearWeight	formula.cpp	/^double NonlinearWeight(double xPulse, int maxNumLevel, double A, double B, double minConductance) {$/;"	f
+getParamA	formula.cpp	/^double getParamA(double NL) {$/;"	f
+round_th	formula.cpp	/^double round_th(double x, double threshold) {$/;"	f
+sigmoid	formula.cpp	/^double sigmoid(double x) {$/;"	f
+truncate	formula.cpp	/^double truncate(double x, int numLevel, double threshold) {$/;"	f
+FORMULA_H_	formula.h	40;"	d
+main	main.cpp	/^int main() {$/;"	f
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
